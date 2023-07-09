@@ -1,6 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import { MongoMemoryServer } from "mongodb-memory-server";
+const routes = require("./routes");
 
 const start = async () => {
   try {
@@ -12,13 +13,17 @@ const start = async () => {
 
     // Creating the express app
     const app = express();
+
     app.use(express.json());
+    app.use(express.urlencoded({ extended: true }));
+
+    app.use("/", routes);
 
     // Starting the server
     await new Promise<void>((resolve, reject) => {
       app.listen(8080, resolve).on("error", reject);
     });
-    console.log(`Server started at http://localhost:3000`);
+    console.log(`Server started at http://localhost:8080`);
   } catch (error: unknown) {
     console.log(error);
     process.exit(1);
