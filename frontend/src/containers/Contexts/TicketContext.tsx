@@ -7,17 +7,19 @@ enum Status {
 
 export interface ITicket {
   client?: string;
-  issue: string;
+  issue?: string;
   deadline?: Date;
   status?: Status;
 }
 
-export const TicketContext = createContext<{
+export interface ITicketContextType {
   tickets: ITicket[];
   createTicket: (ticketInformations: ITicket) => void;
   getAllTickets: () => void;
   changeTicketStatus: (ticketId: string) => void;
-}>({
+}
+
+export const TicketContext = createContext<ITicketContextType>({
   tickets: [],
   createTicket: () => {},
   getAllTickets: () => {},

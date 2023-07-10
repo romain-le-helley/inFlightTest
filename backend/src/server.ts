@@ -1,6 +1,8 @@
 import express from "express";
 import mongoose from "mongoose";
 import { MongoMemoryServer } from "mongodb-memory-server";
+
+const cors = require("cors");
 const routes = require("./routes");
 
 const start = async () => {
@@ -16,6 +18,7 @@ const start = async () => {
 
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
+    app.use(cors());
 
     app.use("/", routes);
 

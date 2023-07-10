@@ -1,10 +1,10 @@
 import * as ticketModel from "../../models/ticketsModel";
 import { NextFunction, Request, Response } from "express";
 
-const generateRandomClient = (clientNameLength: number): String => {
+const generateRandomText = (clientNameLength: number): String => {
   let clientName = "";
   const alphabet =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 ";
   const alphabetLength = alphabet.length;
   for (let i = 0; i < clientNameLength; i++) {
     clientName += alphabet.charAt(Math.floor(alphabetLength * Math.random()));
@@ -31,13 +31,9 @@ const createNewTicket = async (
   try {
     const { client, issue, deadline } = req?.body;
 
-    if (!issue) {
-      return res.status(400).send("Provide an issue to your ticket");
-    }
-
     const newTicketInput: ticketModel.ITicket = {
-      client: client ? client : generateRandomClient(5),
-      issue: issue,
+      client: client ? client : generateRandomText(5),
+      issue: issue ? issue : generateRandomText(40),
       deadline: deadline ? deadline : generateRandomDeadline(),
     };
 
