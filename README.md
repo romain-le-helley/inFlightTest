@@ -42,8 +42,6 @@ Your task is to build a Support Ticket System application that allows users to c
    - [ ] Containerise both apllications using docker
    - [ ] Provide a docker compose file to spin up the application locally.
 
-   ![1688398030985](image/README/1688398030985.png)
-
 **Deliverables:**
 
 - Provide a GitHub repository with your code.
