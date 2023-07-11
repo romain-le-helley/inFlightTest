@@ -60,7 +60,7 @@ const TicketProvider = ({ children }: React.PropsWithChildren) => {
     }
   };
 
-  const changeTicketStatus = async (ticketId: string) => {
+  const changeTicketStatus = async (ticketId: string): Promise<boolean> => {
     try {
       const ticketsResponse = await fetch(baseUrl + "/tickets", {
         method: "PUT",
@@ -79,7 +79,6 @@ const TicketProvider = ({ children }: React.PropsWithChildren) => {
           return await response.json();
         })
         .catch((error) => {
-          getAllTickets();
           throw alert(
             "We couldn't change the status of the ticket. Try again later"
           );
@@ -96,8 +95,10 @@ const TicketProvider = ({ children }: React.PropsWithChildren) => {
       } else {
         getAllTickets();
       }
+      return true;
     } catch (error) {
       console.log(error);
+      return false;
     }
   };
 

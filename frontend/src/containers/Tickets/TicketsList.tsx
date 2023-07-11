@@ -1,13 +1,14 @@
 import { Box, List, ListItem } from "@mui/material";
 import { ITicket } from "../Contexts/TicketContext";
 import Ticket from "../../components/Ticket";
+import { useMemo } from "react";
 
 interface Props {
   tickets: ITicket[];
 }
 
 const TicketsList = ({ tickets }: Props) => {
-  const renderTickets = () => {
+  const renderTickets = useMemo(() => {
     const ticketList = tickets.map((ticket, index) => {
       return (
         <ListItem
@@ -25,11 +26,11 @@ const TicketsList = ({ tickets }: Props) => {
     });
 
     return <List sx={{ width: "100%" }}>{ticketList}</List>;
-  };
+  }, [tickets]);
 
   return (
     <Box sx={{ maxWidth: "50vw", mb: 2, overflow: "scroll", height: "100%" }}>
-      {renderTickets()}
+      {renderTickets}
     </Box>
   );
 };

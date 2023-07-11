@@ -26,12 +26,12 @@ export interface ITicketContextType {
   tickets: ITicket[];
   createTicket: (ticketInformations: INewTicket) => void;
   getAllTickets: () => void;
-  changeTicketStatus: (ticketId: string) => void;
+  changeTicketStatus: (ticketId: string) => Promise<boolean>;
 }
 
 export const TicketContext = createContext<ITicketContextType>({
   tickets: [],
   createTicket: () => {},
   getAllTickets: () => {},
-  changeTicketStatus: () => {},
+  changeTicketStatus: async () => await false,
 });
