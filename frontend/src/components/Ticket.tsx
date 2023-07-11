@@ -7,7 +7,7 @@ import {
 } from "../containers/Contexts/TicketContext";
 import AdjustIcon from "@mui/icons-material/Adjust";
 import CustomSwitch from "./CustomSwitch";
-import { useContext, useState } from "react";
+import { useContext, useMemo, useState } from "react";
 
 interface Props {
   ticket: ITicket;
@@ -21,11 +21,31 @@ const Ticket = ({ ticket, index }: Props) => {
     TicketContext
   ) as ITicketContextType;
 
+  const deadlineStatus = useMemo(() => {
+    if (ticketStatus === Status.closed) {
+      return <AdjustIcon color="success" />;
+    }
+
+    const deadlineTicket = new Date(ticket.deadline).getTime();
+    const todaysDate = new Date().getTime();
+
+    if (
+      new Date(deadlineTicket).setUTCHours(0, 0, 0, 0) >
+      new Date(todaysDate).setUTCHours(0, 0, 0, 0)
+    ) {
+      return <AdjustIcon color="primary" />;
+    } else {
+      return <AdjustIcon color="warning" />;
+    }
+  }, [ticketStatus, ticket.deadline]);
+
   const handleStatusChange = async () => {
     setTicketStatus((previousStatus) =>
       previousStatus === Status.open ? Status.closed : Status.open
     );
+
     const hasStatusChange = await changeTicketStatus(ticket._id);
+
     if (!hasStatusChange) {
       setTicketStatus((previousStatus) =>
         previousStatus === Status.open ? Status.closed : Status.open
@@ -35,7 +55,14 @@ const Ticket = ({ ticket, index }: Props) => {
 
   return (
     <Box sx={{ width: "100%" }}>
-      <Box sx={{ justifyContent: "space-between", display: "flex", mb: 2 }}>
+      <Box
+        sx={{
+          justifyContent: "space-between",
+          display: "flex",
+          mb: 2,
+          alignItems: "center",
+        }}
+      >
         <Typography variant="body1">
           {index + 1}. {ticket.client}
         </Typography>
@@ -44,16 +71,13 @@ const Ticket = ({ ticket, index }: Props) => {
             ticket.deadline ? ticket.deadline : ""
           ).toLocaleDateString()}
         </Typography>
-        <CustomSwitch
-          checked={ticketStatus === Status.open ? false : true}
-          disabled={ticketStatus === Status.closed}
-          onChange={handleStatusChange}
-        />
-        {/*<AdjustIcon color="success" />
-        <AdjustIcon color="warning" />
-        <AdjustIcon color="primary" />
-        <AdjustIcon color="secondary" />
-        <AdjustIcon color="action" /> */}
+        <Box sx={{ alignItems: "center", display: "flex" }}>
+          <CustomSwitch
+            checked={ticketStatus === Status.open ? false : true}
+            onChange={handleStatusChange}
+          />
+          {deadlineStatus}
+        </Box>
       </Box>
       <Typography
         variant="body2"
