@@ -2,10 +2,16 @@ import { Switch, styled } from "@mui/material";
 
 const CustomSwitch = styled(Switch)(({ theme }) => ({
   "& .MuiSwitch-switchBase": {
-    color: "#46C3B3",
-  },
-  "& .MuiSwitch-track": {
-    backgroundColor: "#A4E1DA",
+    color: theme.palette.success.main,
+    "& + .MuiSwitch-track": {
+      backgroundColor: theme.palette.success.main,
+    },
+    "&.Mui-checked": {
+      color: theme.palette.disabled,
+      "& + .MuiSwitch-track": {
+        backgroundColor: theme.palette.disabled,
+      },
+    },
   },
 }));
 

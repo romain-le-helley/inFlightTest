@@ -1,5 +1,5 @@
 import { INewTicket } from "../Contexts/TicketContext";
-import { Button, Grid } from "@mui/material";
+import { Button, Grid, useTheme } from "@mui/material";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 
 interface Props {
@@ -7,6 +7,8 @@ interface Props {
 }
 
 const TicketButtons = ({ createTicket = () => {} }: Props) => {
+  const theme = useTheme();
+
   const handleCreateNewTicket = () => {
     createTicket({});
   };
@@ -21,6 +23,10 @@ const TicketButtons = ({ createTicket = () => {} }: Props) => {
     >
       <Grid item>
         <Button
+          sx={{
+            backgroundColor: theme.palette.button.main,
+            color: theme.palette.white,
+          }}
           variant="contained"
           onClick={handleCreateNewTicket}
           endIcon={<NavigateNextIcon />}
@@ -30,6 +36,10 @@ const TicketButtons = ({ createTicket = () => {} }: Props) => {
       </Grid>
       <Grid item>
         <Button
+          sx={{
+            backgroundColor: theme.palette.button.main,
+            color: theme.palette.white,
+          }}
           variant="contained"
           onClick={handleCreateNewTicket}
           endIcon={<NavigateNextIcon />}

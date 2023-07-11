@@ -1,16 +1,19 @@
 import "./App.css";
 import TicketProvider from "./containers/Providers/TicketProvider";
 import Tickets from "./containers/Tickets/Tickets";
-import { Container } from "@mui/material";
+import { Container, ThemeProvider } from "@mui/material";
+import { theme } from "./theme/Theme";
 
 function App() {
   return (
     <div className="App">
-      <TicketProvider>
-        <Container sx={{ p: 2, display: "flex", flex: 1 }}>
-          <Tickets />
-        </Container>
-      </TicketProvider>
+      <ThemeProvider theme={theme}>
+        <TicketProvider>
+          <Container sx={{ p: 2, display: "flex", flex: 1 }}>
+            <Tickets />
+          </Container>
+        </TicketProvider>
+      </ThemeProvider>
     </div>
   );
 }

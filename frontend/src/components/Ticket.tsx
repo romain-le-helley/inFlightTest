@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, useTheme } from "@mui/material";
 import {
   ITicket,
   ITicketContextType,
@@ -17,6 +17,7 @@ interface Props {
 const Ticket = ({ ticket, index }: Props) => {
   const [ticketStatus, setTicketStatus] = useState<Status>(ticket.status);
 
+  const theme = useTheme();
   const { changeTicketStatus } = useContext(
     TicketContext
   ) as ITicketContextType;
@@ -33,9 +34,9 @@ const Ticket = ({ ticket, index }: Props) => {
       new Date(deadlineTicket).setUTCHours(0, 0, 0, 0) >
       new Date(todaysDate).setUTCHours(0, 0, 0, 0)
     ) {
-      return <AdjustIcon color="primary" />;
+      return <AdjustIcon style={{ color: theme.palette.warning.main }} />;
     } else {
-      return <AdjustIcon color="warning" />;
+      return <AdjustIcon style={{ color: theme.palette.danger.main }} />;
     }
   }, [ticketStatus, ticket.deadline]);
 
@@ -85,7 +86,7 @@ const Ticket = ({ ticket, index }: Props) => {
         align="left"
         noWrap
         sx={{
-          backgroundColor: "#FFFFFF",
+          backgroundColor: theme.palette.white,
           borderRadius: 2,
           p: 2,
           overflow: "auto",

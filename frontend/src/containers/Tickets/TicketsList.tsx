@@ -1,4 +1,4 @@
-import { Box, List, ListItem } from "@mui/material";
+import { Box, List, ListItem, useTheme } from "@mui/material";
 import { ITicket } from "../Contexts/TicketContext";
 import Ticket from "../../components/Ticket";
 import { useMemo } from "react";
@@ -8,13 +8,15 @@ interface Props {
 }
 
 const TicketsList = ({ tickets }: Props) => {
+  const theme = useTheme();
+
   const renderTickets = useMemo(() => {
     const ticketList = tickets.map((ticket, index) => {
       return (
         <ListItem
           key={index}
           sx={{
-            backgroundColor: "#CEE3F6",
+            backgroundColor: theme.palette.primary.main,
             borderRadius: 2,
             p: 2,
             mb: 2,
