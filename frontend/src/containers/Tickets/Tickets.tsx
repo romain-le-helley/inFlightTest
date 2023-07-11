@@ -1,13 +1,11 @@
 import { Box } from "@mui/material";
 import TicketButtons from "./TicketButtons";
-import HeaderTicket from "./HeaderTicket";
 import TicketsList from "./TicketsList";
 import { ITicketContextType, TicketContext } from "../Contexts/TicketContext";
 import { useContext } from "react";
+import HeaderTickets from "./HeaderTickets";
 
-interface Props {}
-
-const Tickets = ({}: Props) => {
+const Tickets = () => {
   const { tickets, createTicket } = useContext(
     TicketContext
   ) as ITicketContextType;
@@ -24,7 +22,7 @@ const Tickets = ({}: Props) => {
         flex: 1,
       }}
     >
-      <HeaderTicket />
+      <HeaderTickets />
       <TicketsList tickets={tickets} />
       <TicketButtons createTicket={createTicket} />
     </Box>

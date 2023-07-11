@@ -1,12 +1,12 @@
-import { ITicket } from "../Contexts/TicketContext";
+import { INewTicket } from "../Contexts/TicketContext";
 import { Button, Grid } from "@mui/material";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 
 interface Props {
-  createTicket: (ticket: ITicket) => void;
+  createTicket: (ticket: INewTicket) => void;
 }
 
-const TicketButtons = ({ createTicket = ({}) => {} }: Props) => {
+const TicketButtons = ({ createTicket = () => {} }: Props) => {
   const handleCreateNewTicket = () => {
     createTicket({});
   };

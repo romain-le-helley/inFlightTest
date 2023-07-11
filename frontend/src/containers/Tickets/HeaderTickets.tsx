@@ -3,7 +3,7 @@ import { Box, Typography } from "@mui/material";
 
 interface Props {}
 
-const HeaderTicket = ({}: Props) => {
+const HeaderTickets = ({}: Props) => {
   return (
     <Box
       sx={{
@@ -31,4 +31,4 @@ const HeaderTicket = ({}: Props) => {
   );
 };
 
-export default HeaderTicket;
+export default HeaderTickets;

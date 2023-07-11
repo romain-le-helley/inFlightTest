@@ -1,11 +1,21 @@
 import { createContext } from "react";
 
-enum Status {
+export enum Status {
   open = "open",
   closed = "closed",
 }
 
 export interface ITicket {
+  client: string;
+  issue: string;
+  deadline: Date;
+  status: Status;
+  _id: string;
+  updatedAt: Date;
+  createdAt: Date;
+}
+
+export interface INewTicket {
   client?: string;
   issue?: string;
   deadline?: Date;
@@ -14,7 +24,7 @@ export interface ITicket {
 
 export interface ITicketContextType {
   tickets: ITicket[];
-  createTicket: (ticketInformations: ITicket) => void;
+  createTicket: (ticketInformations: INewTicket) => void;
   getAllTickets: () => void;
   changeTicketStatus: (ticketId: string) => void;
 }
