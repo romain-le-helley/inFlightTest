@@ -4,9 +4,13 @@ import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 
 interface Props {
   createTicket: (ticket: INewTicket) => void;
+  createNewTicket: () => void;
 }
 
-const TicketButtons = ({ createTicket = () => {} }: Props) => {
+const TicketButtons = ({
+  createTicket = () => {},
+  createNewTicket = () => {},
+}: Props) => {
   const theme = useTheme();
 
   const handleCreateNewTicket = () => {
@@ -49,7 +53,7 @@ const TicketButtons = ({ createTicket = () => {} }: Props) => {
             },
           }}
           variant="contained"
-          onClick={handleCreateNewTicket}
+          onClick={createNewTicket}
           endIcon={<NavigateNextIcon />}
         >
           Create new

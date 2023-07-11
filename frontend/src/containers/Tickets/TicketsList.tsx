@@ -28,7 +28,7 @@ const TicketsList = ({ tickets }: Props) => {
     });
 
     return <List sx={{ width: "100%" }}>{ticketList}</List>;
-  }, [tickets]);
+  }, [tickets, theme.palette]);
 
   return (
     <Box sx={{ maxWidth: "50vw", mb: 2, overflow: "scroll", height: "100%" }}>

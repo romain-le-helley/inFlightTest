@@ -38,7 +38,7 @@ const Ticket = ({ ticket, index }: Props) => {
     } else {
       return <AdjustIcon style={{ color: theme.palette.danger.main }} />;
     }
-  }, [ticketStatus, ticket.deadline]);
+  }, [ticketStatus, ticket.deadline, theme.palette]);
 
   const handleStatusChange = async () => {
     setTicketStatus((previousStatus) =>

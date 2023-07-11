@@ -19,7 +19,6 @@ export interface INewTicket {
   client?: string;
   issue?: string;
   deadline?: Date;
-  status?: Status;
 }
 
 export interface ITicketContextType {

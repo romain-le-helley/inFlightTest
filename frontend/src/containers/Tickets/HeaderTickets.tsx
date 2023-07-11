@@ -1,9 +1,7 @@
 import EventAvailableIcon from "@mui/icons-material/EventAvailable";
 import { Box, Typography } from "@mui/material";
 
-interface Props {}
-
-const HeaderTickets = ({}: Props) => {
+const HeaderTickets = () => {
   return (
     <Box
       sx={{
