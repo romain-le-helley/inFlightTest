@@ -26,6 +26,10 @@ const TicketButtons = ({ createTicket = () => {} }: Props) => {
           sx={{
             backgroundColor: theme.palette.button.main,
             color: theme.palette.white,
+            ":hover": {
+              backgroundColor: theme.palette.button.main,
+              opacity: 0.9,
+            },
           }}
           variant="contained"
           onClick={handleCreateNewTicket}
@@ -39,6 +43,10 @@ const TicketButtons = ({ createTicket = () => {} }: Props) => {
           sx={{
             backgroundColor: theme.palette.button.main,
             color: theme.palette.white,
+            ":hover": {
+              backgroundColor: theme.palette.button.main,
+              opacity: 0.9,
+            },
           }}
           variant="contained"
           onClick={handleCreateNewTicket}
