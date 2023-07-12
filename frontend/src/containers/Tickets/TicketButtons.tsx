@@ -1,6 +1,26 @@
 import { INewTicket } from "../Contexts/TicketContext";
-import { Button, Grid, useTheme } from "@mui/material";
+import { Button, Grid } from "@mui/material";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
+import { theme } from "../../theme/Theme";
+
+const styles = {
+  createRandomButton: {
+    backgroundColor: theme.palette.button.main,
+    color: theme.palette.white,
+    ":hover": {
+      backgroundColor: theme.palette.button.main,
+      opacity: 0.9,
+    },
+  },
+  createNewButton: {
+    backgroundColor: theme.palette.button.main,
+    color: theme.palette.white,
+    ":hover": {
+      backgroundColor: theme.palette.button.main,
+      opacity: 0.9,
+    },
+  },
+};
 
 interface Props {
   createTicket: (ticket: INewTicket) => void;
@@ -11,8 +31,6 @@ const TicketButtons = ({
   createTicket = () => {},
   createNewTicket = () => {},
 }: Props) => {
-  const theme = useTheme();
-
   const handleCreateNewTicket = () => {
     createTicket({});
   };
@@ -27,14 +45,7 @@ const TicketButtons = ({
     >
       <Grid item>
         <Button
-          sx={{
-            backgroundColor: theme.palette.button.main,
-            color: theme.palette.white,
-            ":hover": {
-              backgroundColor: theme.palette.button.main,
-              opacity: 0.9,
-            },
-          }}
+          sx={styles.createRandomButton}
           variant="contained"
           onClick={handleCreateNewTicket}
           endIcon={<NavigateNextIcon />}
@@ -44,14 +55,7 @@ const TicketButtons = ({
       </Grid>
       <Grid item>
         <Button
-          sx={{
-            backgroundColor: theme.palette.button.main,
-            color: theme.palette.white,
-            ":hover": {
-              backgroundColor: theme.palette.button.main,
-              opacity: 0.9,
-            },
-          }}
+          sx={styles.createNewButton}
           variant="contained"
           onClick={createNewTicket}
           endIcon={<NavigateNextIcon />}

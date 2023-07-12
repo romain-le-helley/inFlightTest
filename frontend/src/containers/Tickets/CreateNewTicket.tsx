@@ -4,6 +4,40 @@ import { Box, Button } from "@mui/material";
 import { theme } from "../../theme/Theme";
 import CustomTextField from "../../components/CustomTextField";
 
+const styles = {
+  container: {
+    display: "flex",
+    flexDirection: "column",
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: "50%",
+    backgroundColor: theme.palette.white,
+    boxShadow: 8,
+    p: 3,
+  },
+  buttonContainer: {
+    display: "flex",
+    justifyContent: "center",
+  },
+  closeButton: {
+    backgroundColor: theme.palette.white,
+    width: "max-content",
+    m: 1,
+  },
+  createButton: {
+    backgroundColor: theme.palette.button.main,
+    color: theme.palette.white,
+    ":hover": {
+      backgroundColor: theme.palette.button.main,
+      opacity: 0.9,
+    },
+    width: "max-content",
+    m: 1,
+  },
+};
+
 interface Props {
   createTicket: (ticket: INewTicket) => void;
   closeModal: () => void;
@@ -19,20 +53,7 @@ const CreateNewTicket = ({ createTicket, closeModal }: Props) => {
   };
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        position: "absolute",
-        top: "50%",
-        left: "50%",
-        transform: "translate(-50%, -50%)",
-        width: "50%",
-        backgroundColor: theme.palette.white,
-        boxShadow: 8,
-        p: 3,
-      }}
-    >
+    <Box sx={styles.container}>
       <Box sx={{ display: "flex", flexDirection: "column" }}>
         <CustomTextField
           label="Client"
@@ -61,29 +82,16 @@ const CreateNewTicket = ({ createTicket, closeModal }: Props) => {
           }}
         />
       </Box>
-      <Box sx={{ display: "flex", justifyContent: "center" }}>
+      <Box sx={styles.buttonContainer}>
         <Button
-          sx={{
-            backgroundColor: theme.palette.white,
-            width: "max-content",
-            m: 1,
-          }}
+          sx={styles.closeButton}
           variant="contained"
           onClick={closeModal}
         >
           Close
         </Button>
         <Button
-          sx={{
-            backgroundColor: theme.palette.button.main,
-            color: theme.palette.white,
-            ":hover": {
-              backgroundColor: theme.palette.button.main,
-              opacity: 0.9,
-            },
-            width: "max-content",
-            m: 1,
-          }}
+          sx={styles.createButton}
           variant="contained"
           onClick={handleCreateNewTicket}
         >

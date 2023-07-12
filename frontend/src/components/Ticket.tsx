@@ -8,6 +8,26 @@ import {
 import AdjustIcon from "@mui/icons-material/Adjust";
 import CustomSwitch from "./CustomSwitch";
 import { useContext, useMemo, useState } from "react";
+import { theme } from "../theme/Theme";
+
+const styles = {
+  headerContainer: {
+    justifyContent: "space-between",
+    display: "flex",
+    mb: 2,
+    alignItems: "center",
+  },
+  statusContainer: {
+    alignItems: "center",
+    display: "flex",
+  },
+  ticketIssue: {
+    backgroundColor: theme.palette.white,
+    borderRadius: 2,
+    p: 2,
+    overflow: "auto",
+  },
+};
 
 interface Props {
   ticket: ITicket;
@@ -56,14 +76,7 @@ const Ticket = ({ ticket, index }: Props) => {
 
   return (
     <Box sx={{ width: "100%" }}>
-      <Box
-        sx={{
-          justifyContent: "space-between",
-          display: "flex",
-          mb: 2,
-          alignItems: "center",
-        }}
-      >
+      <Box sx={styles.headerContainer}>
         <Typography variant="body1">
           {index + 1}. {ticket.client}
         </Typography>
@@ -72,7 +85,7 @@ const Ticket = ({ ticket, index }: Props) => {
             ticket.deadline ? ticket.deadline : ""
           ).toLocaleDateString()}
         </Typography>
-        <Box sx={{ alignItems: "center", display: "flex" }}>
+        <Box sx={styles.statusContainer}>
           <CustomSwitch
             checked={ticketStatus === Status.open ? false : true}
             onChange={handleStatusChange}
@@ -85,12 +98,7 @@ const Ticket = ({ ticket, index }: Props) => {
         color="grey"
         align="left"
         noWrap
-        sx={{
-          backgroundColor: theme.palette.white,
-          borderRadius: 2,
-          p: 2,
-          overflow: "auto",
-        }}
+        sx={styles.ticketIssue}
       >
         {ticket.issue}
       </Typography>
