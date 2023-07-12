@@ -3,7 +3,20 @@
 - git clone https://github.com/romain-le-helley/inFlightTest.git
 - cd inFlightTest
 - npm install | yarn
-- npm start | yarn start
+
+**Run**
+
+1. backend:
+
+- npm backend | yarn backend
+
+2. frontend:
+
+- npm frontend | yarn frontend
+
+3. all:
+
+-npm start | yarn start
 
 # **Postman link**
 
