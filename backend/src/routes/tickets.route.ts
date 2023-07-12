@@ -1,5 +1,5 @@
 const ticketExpress = require("express");
-const controller = require("../controllers/tickets");
+const controller = require("../controllers/tickets/tickets.controller");
 
 const ticketRouter = ticketExpress.Router();
 
