@@ -1,4 +1,4 @@
-import * as ticketModel from "../../models/ticketsModel";
+import * as ticketModel from "../../models/tickets.model";
 import { NextFunction, Request, Response } from "express";
 
 const generateRandomText = (clientNameLength: number): String => {
